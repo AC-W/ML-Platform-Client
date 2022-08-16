@@ -1,22 +1,11 @@
 import React,{useState, useEffect}  from 'react';
 import './Car_model.css';
 
-import socket from '../socket.js'
-const sio = socket
-
 function Car_model() {
     const [Image,setImage] = useState()
     const [imageFile,setImageFile] = useState()
     const [models,setModels] = useState([])
     const [probs,setProbs] = useState([])
-
-    useEffect(() => {
-        console.log('set up car model')
-        sio.on('car model result',(data) =>{
-            setModels(data.model)
-            setProbs(data.prob)
-        })
-    },[])
 
     const handleChange = (event) => {
         setImage(URL.createObjectURL(event.target.files[0]))
@@ -26,7 +15,24 @@ function Car_model() {
     }
 
     const sendImage = () =>{
-        sio.emit('car_predict',{img:imageFile})
+        var xhr = new XMLHttpRequest();
+        var formData = new FormData();
+        formData.append('file',imageFile);
+
+        xhr.onload = function () {
+            var data = JSON.parse(this.response)
+            console.log(data)
+            if (xhr.status >= 200 && xhr.status < 400) {
+                setModels(data.models)
+                setProbs(data.probs)
+            } 
+            else {
+                console.log('error')
+            }
+        }
+
+        xhr.open('POST', 'https://ml-platform-server.herokuapp.com/predict_car_model',true);
+        xhr.send(formData);
     }
 
     const output = () => {

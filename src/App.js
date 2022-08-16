@@ -10,8 +10,13 @@ import Car_model from './pages/Car_model.jsx';
 function App() {
   return (
     <div className="App">
+        <BrowserRouter>
           <NavBar />
-          <Car_model />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/car_model" element={<Car_model/>}/>
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
