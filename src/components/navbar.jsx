@@ -41,7 +41,7 @@ class NavBar extends Component {
             <div className='nav_bar_container'>
                 <div className='nav_bar_items'>
                     <DropdownButton id="dropdown-basic-button" title={this.state.model}>
-                        <Dropdown.Item onClick={ () => this.changeModel('car_model_recognition')}><NavLink className="nav-link" to="/car_model">Car Recognition Model</NavLink></Dropdown.Item>
+                        <Dropdown.Item onClick={ () => this.changeModel('car_model_recognition')}><NavLink className="nav-link" to="/ML-Platform-Client/car_model">Car Recognition Model</NavLink></Dropdown.Item>
                         <Dropdown.Item onClick={ () => this.changeModel('Model 2')}>Model 2</Dropdown.Item>
                         <Dropdown.Item onClick={ () => this.changeModel('Model 3')}>Model 3</Dropdown.Item>
                     </DropdownButton>
@@ -52,7 +52,7 @@ class NavBar extends Component {
                 </div>
                     
                 <div className='nav_bar_items'>
-                    <h4 className='title'><NavLink className="nav-link" to="/">Home</NavLink></h4>
+                    <h4 className='title'><NavLink className="nav-link" to="/ML-Platform-Client">Home</NavLink></h4>
                 </div>
             </div>
         );

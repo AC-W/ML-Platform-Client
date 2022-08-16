@@ -13,8 +13,8 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/car_model" element={<Car_model/>}/>
+            <Route path="/ML-Platform-Client" element={<Home />} />
+            <Route path="/ML-Platform-Client/car_model" element={<Car_model/>}/>
           </Routes>
         </BrowserRouter>
     </div>
