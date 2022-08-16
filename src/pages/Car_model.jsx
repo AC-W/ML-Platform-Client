@@ -27,20 +27,20 @@ function Car_model() {
         socket.emit('car_predict',{img:imageFile})
     }
 
-    const output = () => {
-        if (models.length !== 0){
-            return(
-                <div className='output_box'>
-                        <div className='name_container'>
-                            {models.map(model => <p>{model}</p>)}
-                        </div>
-                        <div className='prob_container'>
-                            {probs.map(prob => <p>{prob}</p>)}
-                        </div>
-                    </div>
-                )
-        }
-    }
+    // const output = () => {
+    //     if (models.length !== 0){
+    //         return(
+    //             <div className='output_box'>
+    //                     <div className='name_container'>
+    //                         {models.map(model => <p>{model}</p>)}
+    //                     </div>
+    //                     <div className='prob_container'>
+    //                         {probs.map(prob => <p>{prob}</p>)}
+    //                     </div>
+    //                 </div>
+    //             )
+    //     }
+    // }
 
     return (
       <div className="Car_model">
@@ -58,8 +58,17 @@ function Car_model() {
                     <button id="submit" onClick={sendImage}>Upload File</button>
                 </div>
             </div>
+            
+            <div className='output_box'>
+                <div className='name_container'>
+                    {models.map(model => <p>{model}</p>)}
+                </div>
+                <div className='prob_container'>
+                    {probs.map(prob => <p>{prob}</p>)}
+                </div>
+            </div>
 
-            {output()}
+            {/* {output()} */}
             
         </div>
         
