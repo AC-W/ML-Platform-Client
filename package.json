@@ -1,6 +1,5 @@
 {
   "homepage":"https://ac-w.github.io/ML-Platform-Client",
-  "page":"https://ac-w.github.io/ML-Platform-Client/car_model",
   "name": "client",
   "version": "0.1.0",
   "private": true,

@@ -10,13 +10,8 @@ import Car_model from './pages/Car_model.jsx';
 function App() {
   return (
     <div className="App">
-        <BrowserRouter>
           <NavBar />
-          <Routes>
-            <Route path="/ML-Platform-Client" element={<Home />} />
-            <Route path="/ML-Platform-Client/car_model" element={<Car_model/>}/>
-          </Routes>
-        </BrowserRouter>
+          <Car_model />
     </div>
   );
 }
