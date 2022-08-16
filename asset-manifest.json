@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ML-Platform-Client/static/css/main.3007fbe5.css",
-    "main.js": "/ML-Platform-Client/static/js/main.2ce7d7ca.js",
+    "main.js": "/ML-Platform-Client/static/js/main.fe8bc414.js",
     "index.html": "/ML-Platform-Client/index.html",
     "main.3007fbe5.css.map": "/ML-Platform-Client/static/css/main.3007fbe5.css.map",
-    "main.2ce7d7ca.js.map": "/ML-Platform-Client/static/js/main.2ce7d7ca.js.map"
+    "main.fe8bc414.js.map": "/ML-Platform-Client/static/js/main.fe8bc414.js.map"
   },
   "entrypoints": [
     "static/css/main.3007fbe5.css",
-    "static/js/main.2ce7d7ca.js"
+    "static/js/main.fe8bc414.js"
   ]
 }
