@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import './navbar.css';
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import socketio from "socket.io-client";
 import { NavLink } from "react-router-dom";
+
+import socket from '../socket.js'
 
 class NavBar extends Component {
 
@@ -15,7 +16,7 @@ class NavBar extends Component {
             status:'Server Status'
         }
 
-        this.socket = socketio.connect("https://ml-platform-server.herokuapp.com");
+        this.socket = socket
 
         this.socket.on("connect", () => {
             console.log("connected");

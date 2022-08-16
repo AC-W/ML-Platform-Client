@@ -1,8 +1,8 @@
 import React,{useState, useEffect}  from 'react';
 import './Car_model.css';
 
-import socketio from "socket.io-client";
-const socket = socketio.connect("https://ml-platform-server.herokuapp.com");
+import socket from '../socket.js'
+const sio = socket
 
 function Car_model() {
     const [Image,setImage] = useState()
@@ -12,7 +12,7 @@ function Car_model() {
 
     useEffect(() => {
         console.log('set up car model')
-        socket.on('car model result',(data) =>{
+        sio.on('car model result',(data) =>{
             setModels(data.model)
             setProbs(data.prob)
         })
@@ -24,7 +24,22 @@ function Car_model() {
     }
 
     const sendImage = () =>{
-        socket.emit('car_predict',{img:imageFile})
+        sio.emit('car_predict',{img:imageFile})
+    }
+
+    const output = () => {
+        if (models.length !== 0){
+            return(
+                <div className='output_box'>
+                        <div className='name_container'>
+                            {models.map(model => <p>{model}</p>)}
+                        </div>
+                        <div className='prob_container'>
+                            {probs.map(prob => <p>{prob}</p>)}
+                        </div>
+                    </div>
+                )
+        }
     }
 
     return (
@@ -43,15 +58,8 @@ function Car_model() {
                     <button id="submit" onClick={sendImage}>Upload File</button>
                 </div>
             </div>
-            
-            <div className='output_box'>
-                <div className='name_container'>
-                    {models.map(model => <p>{model}</p>)}
-                </div>
-                <div className='prob_container'>
-                    {probs.map(prob => <p>{prob}</p>)}
-                </div>
-            </div>
+
+            {output()}
             
         </div>
         
