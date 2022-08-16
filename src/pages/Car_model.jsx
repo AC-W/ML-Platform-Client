@@ -21,6 +21,8 @@ function Car_model() {
     const handleChange = (event) => {
         setImage(URL.createObjectURL(event.target.files[0]))
         setImageFile(event.target.files[0])
+        console.log(Image)
+        console.log(imageFile)
     }
 
     const sendImage = () =>{
