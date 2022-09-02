@@ -1,3 +1,3 @@
-API GitHub: https://github.com/AC-W/ML-Platform-API
+website: https://ac-w.github.io/ML-Platform-Client/
 
-API Host: https://ml-platform-server.herokuapp.com/
+API GitHub: https://github.com/AC-W/ML-Platform-API
