@@ -44,11 +44,11 @@ function Car_model() {
         }
         if(url)
         {
-            xhr.open('POST', 'http://127.0.0.1:8000/predict_car_model_url',true);
+            xhr.open('POST', 'https://ml-platform-server.herokuapp.com/predict_car_model_url',true);
         }
         else
         {
-            xhr.open('POST', 'http://127.0.0.1:8000/predict_car_model',true);
+            xhr.open('POST', 'https://ml-platform-server.herokuapp.com/predict_car_model',true);
         }
         
         xhr.send(formData);

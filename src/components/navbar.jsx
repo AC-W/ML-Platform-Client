@@ -22,7 +22,7 @@ function NavBar(){
             console.log('error')
             }
         }
-        xhr.open('GET','http://127.0.0.1:8000/load_car_model');
+        xhr.open('GET','https://ml-platform-server.herokuapp.com/load_car_model');
         xhr.send();
         setStatus('loading model...')
         return
