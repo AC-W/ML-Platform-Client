@@ -1,4 +1,4 @@
-import React,{useState, useEffect}  from 'react';
+import React,{useState}  from 'react';
 import './Car_model.css';
 
 function Car_model() {
@@ -10,14 +10,26 @@ function Car_model() {
     const handleChange = (event) => {
         setImage(URL.createObjectURL(event.target.files[0]))
         setImageFile(event.target.files[0])
-        console.log(Image)
-        console.log(imageFile)
+    }
+
+    const url_change = (event) => {
+        setImage(document.getElementById('url').value)
     }
 
     const sendImage = () =>{
         var xhr = new XMLHttpRequest();
         var formData = new FormData();
-        formData.append('file',imageFile);
+        var url = document.getElementById('url').value;
+        console.log(url)
+        if (url)
+        {
+            formData.append('url',url);
+        }
+        else
+        {
+            formData.append('file',imageFile);
+        }
+        
 
         xhr.onload = function () {
             var data = JSON.parse(this.response)
@@ -30,13 +42,20 @@ function Car_model() {
                 console.log('error')
             }
         }
-
-        xhr.open('POST', 'https://ml-platform-server.herokuapp.com/predict_car_model',true);
+        if(url)
+        {
+            xhr.open('POST', 'http://127.0.0.1:8000/predict_car_model_url',true);
+        }
+        else
+        {
+            xhr.open('POST', 'http://127.0.0.1:8000/predict_car_model',true);
+        }
+        
         xhr.send(formData);
     }
 
     const output = () => {
-        if (models.length !== 0){
+        if (models && models.length !== 0){
             return(
                 <div className='output_box'>
                         <div className='name_container'>
@@ -63,6 +82,7 @@ function Car_model() {
                 <img className='image' src={Image}/>
                 <div className='input_field'>
                     <input type="file" id="files" accept="image/jpeg, image/png" onChange={handleChange}/>
+                    <input type="text" id="url" placeholder='Enter URL' onChange={url_change}/>
                     <button id="submit" onClick={sendImage}>Upload File</button>
                 </div>
             </div>
